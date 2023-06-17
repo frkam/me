@@ -10,12 +10,12 @@ on:
       - "ru/**"
       - ".github/workflows/build_cv.yaml"
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
 
     steps:
       - name: Set up Git repository
@@ -36,6 +36,7 @@ jobs:
             ru/Dmitry_Moskalenko_CV.pdf
           commit-msg: "chore: update cv files [skip ci]"
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          allow-removing: true
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
@@ -48,9 +49,6 @@ jobs:
   release:
     runs-on: ubuntu-latest
     needs: build
-
-    permissions:
-      contents: write
 
     steps:
       - uses: actions/download-artifact@v3
