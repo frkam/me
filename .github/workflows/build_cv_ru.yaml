@@ -5,7 +5,8 @@ on:
   push:
     branches:
       - main
-  pull_request:
+    paths:
+      - "ru/**"
 
 jobs:
   build-latex:
@@ -17,10 +18,10 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: sourabh_bajaj_resume.tex
+          root_file: ru/Dmitry_Moskalenko_CV.tex
 
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
-          name: sourabh_bajaj_resume_${{ github.sha }}
-          path: sourabh_bajaj_resume.pdf
+          name: Dmitry_Moskalenko_CV_${{ github.sha }}
+          path: Dmitry_Moskalenko_CV.pdf
