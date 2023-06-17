@@ -24,8 +24,9 @@ jobs:
         with:
           root_file: en/Dmitry_Moskalenko_CV.tex
 
-      - name: Upload PDF file
-        uses: actions/upload-artifact@v3
+      - name: Upload cv to release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: Dmitry_Moskalenko_CV_${{ github.sha }}
-          path: ./en/Dmitry_Moskalenko_CV.pdf
+          files: en/Dmitry_Moskalenko_CV.tex
