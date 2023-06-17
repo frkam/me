@@ -28,6 +28,9 @@ jobs:
             en/Dmitry_Moskalenko_CV.tex
             ru/Dmitry_Moskalenko_CV.tex
 
+      - name: Add cv to git
+        run: git add --all
+
       - name: Update files on GitHub
         uses: test-room-7/action-update-file@v1.8.0
         with:
