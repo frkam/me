@@ -58,12 +58,15 @@ jobs:
           tag_prefix: ""
           tag_template: "yyyy.mm.dd.i"
 
+      - name: test
+        run: ls
+
       - name: Upload cv to release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            ru/Dmitry_Moskalenko_CV_RU.pdf
-            en/Dmitry_Moskalenko_CV_EN.pdf
+            Dmitry_Moskalenko_CV_RU.pdf
+            Dmitry_Moskalenko_CV_EN.pdf
           tag_name: ${{ steps.generate_release_tag.outputs.next_release_tag }}
           token: ${{ secrets.GITHUB_TOKEN }}
           name: English CV ${{ steps.generate_release_tag.outputs.next_release_tag }}
