@@ -1,4 +1,4 @@
-name: Build RU cv
+name: Release cv pdf
 
 on:
   workflow_dispatch:
@@ -6,8 +6,9 @@ on:
     branches:
       - main
     paths:
+      - "en/**"
       - "ru/**"
-      - ".github/workflows/build_cv_ru.yaml"
+      - ".github/workflows/build_cv.yaml"
 
 jobs:
   build-latex:
@@ -20,10 +21,12 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v3
 
-      - name: Compile CV from latex
+      - name: Build CV's from latex
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: ru/Dmitry_Moskalenko_CV.tex
+          root_file: |
+            en/Dmitry_Moskalenko_CV.tex
+            ru/Dmitry_Moskalenko_CV.tex
 
       - name: Generate release tag
         id: generate_release_tag
@@ -36,7 +39,9 @@ jobs:
       - name: Upload cv to release
         uses: softprops/action-gh-release@v1
         with:
-          files: ru/Dmitry_Moskalenko_CV.pdf
+          files: |
+            ru/Dmitry_Moskalenko_CV.pdf
+            en/Dmitry_Moskalenko_CV.pdf
           tag_name: ${{ steps.generate_release_tag.outputs.next_release_tag }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Russian CV ${{ steps.generate_release_tag.outputs.next_release_tag }}
+          name: English CV ${{ steps.generate_release_tag.outputs.next_release_tag }}
