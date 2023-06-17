@@ -27,16 +27,16 @@ jobs:
 
       - name: Rename cv files
         run: |
-          mv en/Dmitry_Moskalenko_CV.tex en/Dmitry_Moskalenko_CV_EN.tex
-          mv ru/Dmitry_Moskalenko_CV.tex ru/Dmitry_Moskalenko_CV_RU.tex
+          mv en/Dmitry_Moskalenko_CV.pdf en/Dmitry_Moskalenko_CV_EN.pdf
+          mv ru/Dmitry_Moskalenko_CV.pdf ru/Dmitry_Moskalenko_CV_RU.pdf
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: cv
           path: |
-            en/Dmitry_Moskalenko_CV_EN.tex
-            ru/Dmitry_Moskalenko_CV_RU.tex
+            en/Dmitry_Moskalenko_CV_EN.pdf
+            ru/Dmitry_Moskalenko_CV_RU.pdf
 
   release:
     runs-on: ubuntu-latest
@@ -58,15 +58,12 @@ jobs:
           tag_prefix: ""
           tag_template: "yyyy.mm.dd.i"
 
-      - name: test
-        run: ls
-
       - name: Upload cv to release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            Dmitry_Moskalenko_CV_RU.pdf
-            Dmitry_Moskalenko_CV_EN.pdf
+            en/Dmitry_Moskalenko_CV_RU.pdf
+            ru/Dmitry_Moskalenko_CV_EN.pdf
           tag_name: ${{ steps.generate_release_tag.outputs.next_release_tag }}
           token: ${{ secrets.GITHUB_TOKEN }}
           name: English CV ${{ steps.generate_release_tag.outputs.next_release_tag }}
