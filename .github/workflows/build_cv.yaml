@@ -59,7 +59,10 @@ jobs:
           tag_template: "yyyy.mm.dd.i"
 
       - name: test
-        run: ls
+        run: |
+          ls
+          ls en
+          ls ru
 
       - name: Upload cv to release
         uses: softprops/action-gh-release@v1
