@@ -21,12 +21,17 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v3
 
-      - name: Build CV's from latex
+      - name: Build EN CV from latex
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: |
-            en/Dmitry_Moskalenko_CV.tex
-            ru/Dmitry_Moskalenko_CV.tex
+          root_file: Dmitry_Moskalenko_CV.tex
+          working_directory: en
+
+      - name: Build EN CV from latex
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: Dmitry_Moskalenko_CV.tex
+          working_directory: ru
 
       - name: Log
         run: |
