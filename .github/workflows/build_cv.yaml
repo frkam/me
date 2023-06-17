@@ -28,18 +28,21 @@ jobs:
             en/Dmitry_Moskalenko_CV.tex
             ru/Dmitry_Moskalenko_CV.tex
 
-      - name: Add cv to git
-        run: git add --all
+      - name: Log
+        run: |
+          ls
+          ls en
+          ls ru
 
-      - name: Update files on GitHub
-        uses: test-room-7/action-update-file@v1.8.0
-        with:
-          file-path: |
-            en/Dmitry_Moskalenko_CV.pdf
-            ru/Dmitry_Moskalenko_CV.pdf
-          commit-msg: "chore: update cv files [skip ci]"
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          allow-removing: true
+      # - name: Update files on GitHub
+      #   uses: test-room-7/action-update-file@v1.8.0
+      #   with:
+      #     file-path: |
+      #       en/Dmitry_Moskalenko_CV.pdf
+      #       ru/Dmitry_Moskalenko_CV.pdf
+      #     commit-msg: "chore: update cv files [skip ci]"
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     allow-removing: true
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
