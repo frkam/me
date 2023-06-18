@@ -1,5 +1,5 @@
 # me
 
 ## CV
-EN: frkam.github.io/CV/en/Dmitry_Moskalenko_CV.pdf <br>
-RU: frkam.github.io/CV/ru/Dmitry_Moskalenko_CV.pdf
+EN: frkam.github.io/me/cv/pdf/en/Dmitry_Moskalenko_CV.pdf <br>
+RU: frkam.github.io/me/cv/pdf/ru/Dmitry_Moskalenko_CV.pdf
