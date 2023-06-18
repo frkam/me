@@ -68,15 +68,10 @@ jobs:
         with:
           name: cv
 
-      - run: |
-          ls
-          ls pdf
-          ls pdf/en
-
       - name: Rename cv files
         run: |
-          mv pdf/en/Dmitry_Moskalenko_CV.pdf pdf/en/Dmitry_Moskalenko_CV_EN.pdf
-          mv pdf/ru/Dmitry_Moskalenko_CV.pdf pdf/ru/Dmitry_Moskalenko_CV_RU.pdf
+          mv en/Dmitry_Moskalenko_CV.pdf en/Dmitry_Moskalenko_CV_EN.pdf
+          mv ru/Dmitry_Moskalenko_CV.pdf ru/Dmitry_Moskalenko_CV_RU.pdf
 
       - name: Generate release tag
         id: generate_release_tag
@@ -90,8 +85,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            pdf/en/Dmitry_Moskalenko_CV_EN.pdf
-            pdf/ru/Dmitry_Moskalenko_CV_RU.pdf
+            en/Dmitry_Moskalenko_CV_EN.pdf
+            ru/Dmitry_Moskalenko_CV_RU.pdf
           tag_name: ${{ steps.generate_release_tag.outputs.next_release_tag }}
           token: ${{ secrets.GITHUB_TOKEN }}
           name: CV ${{ steps.generate_release_tag.outputs.next_release_tag }}
