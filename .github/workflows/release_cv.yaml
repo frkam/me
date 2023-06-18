@@ -7,7 +7,7 @@ on:
       - main
     paths:
       - "cv/latex/**"
-      - ".github/workflows/build_cv.yaml"
+      - ".github/workflows/release_cv.yaml"
 
 permissions:
   contents: write
