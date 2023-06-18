@@ -12,13 +12,13 @@ on:
 permissions:
   contents: write
 
-defaults:
-  run:
-    working-directory: cv
-
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: cv
 
     steps:
       - name: Set up Git repository
@@ -72,7 +72,6 @@ jobs:
           ls
           ls pdf
           ls pdf/en
-          ls pdf/ru
 
       - name: Rename cv files
         run: |
@@ -91,8 +90,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            cv/pdf/en/Dmitry_Moskalenko_CV_EN.pdf
-            cv/pdf/ru/Dmitry_Moskalenko_CV_RU.pdf
+            pdf/en/Dmitry_Moskalenko_CV_EN.pdf
+            pdf/ru/Dmitry_Moskalenko_CV_RU.pdf
           tag_name: ${{ steps.generate_release_tag.outputs.next_release_tag }}
           token: ${{ secrets.GITHUB_TOKEN }}
           name: CV ${{ steps.generate_release_tag.outputs.next_release_tag }}
