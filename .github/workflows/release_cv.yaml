@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - "latex/**"
+      - "cv/latex/**"
       - ".github/workflows/build_cv.yaml"
 
 permissions:
