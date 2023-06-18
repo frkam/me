@@ -27,7 +27,7 @@ jobs:
           root_file: Dmitry_Moskalenko_CV.tex
           working_directory: en
 
-      - name: Build EN CV from latex
+      - name: Build RU CV from latex
         uses: xu-cheng/latex-action@v2
         with:
           root_file: Dmitry_Moskalenko_CV.tex
