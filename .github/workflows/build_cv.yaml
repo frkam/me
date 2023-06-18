@@ -6,8 +6,7 @@ on:
     branches:
       - main
     paths:
-      - "en/**"
-      - "ru/**"
+      - "latex/**"
       - ".github/workflows/build_cv.yaml"
 
 permissions:
@@ -25,13 +24,13 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: Dmitry_Moskalenko_CV.tex
-          working_directory: en
+          working_directory: latex/en
 
       - name: Build RU CV from latex
         uses: xu-cheng/latex-action@v2
         with:
           root_file: Dmitry_Moskalenko_CV.tex
-          working_directory: ru
+          working_directory: latex/ru
 
       - name: Move pdf files to pdf dir
         run: |
@@ -64,6 +63,8 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: cv
+
+      - run: ls
 
       - name: Rename cv files
         run: |
